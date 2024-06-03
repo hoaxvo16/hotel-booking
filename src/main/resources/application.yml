@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: hotel-booking
+  datasource:
+    url: ${POSTGRES_URL}
+    username: admin
+    password: 1234

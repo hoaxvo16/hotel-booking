@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: hotel_booking
+    ports:
+      - "5432:5432"
+    networks:
+      - hotel-booking-net
+  hotel-booking-app:
+    container_name: hotel-booking-app
+    image: hotel-booking-app
+    ports:
+      - "8080:8080"
+    networks:
+      - hotel-booking-net
+    depends_on:
+      - postgres
+    environment:
+      - POSTGRES_URL=jdbc:postgresql://postgres:5432/hotel_booking
+networks:
+  hotel-booking-net:
+    driver: bridge
