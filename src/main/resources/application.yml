@@ -3,5 +3,6 @@ spring:
     name: hotel-booking
   datasource:
     url: ${POSTGRES_URL}
+#    jdbc:postgresql://localhost:5432/hotel_booking
     username: admin
     password: 1234
